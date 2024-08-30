@@ -1,0 +1,60 @@
+/* AreaIf.c */
+#include <stdio.h>
+int main()
+{
+  float Price, Discount, NetPrice, Interest, NPriceInt, MPayment;
+  int Option, Cont;
+  do{
+    printf("Furniture Price = ");
+    scanf("%f", &Price);
+    if (Price <= 5000)
+    { 
+      Discount = 0;
+    }
+    else if (Price <= 10000 || Price > 5000)
+    {
+      Discount = Price * 0.05;
+    }
+    else 
+    {
+      Discount = Price * 0.1;
+    }
+    NetPrice = Price - Discount;
+    printf ( "Discount = %.2f\n", Discount);
+    printf("Net Price = %.2f\n", NetPrice);
+    scanf("%f", &NetPrice);
+    printf("Credit Card Payment Option\n");  
+    printf("1) 12 Months with 2%% Interests\n");
+    printf("2) 15 Months with 3%% Interests\n");
+    printf("3) 18 Months with 4%% Interests\n");
+    printf("Customer Option = ");
+    scanf("%d", &Option);
+    while (Option < 1 || Option > 3)
+      {
+      printf( "Error Option!! Please Try Again!!\n");
+      scanf ( "%d", &Option);
+      }
+    switch (Option)
+      {
+        case 1 : Interest = NetPrice * 0.02;
+                 NPriceInt = NetPrice + Interest;
+                 MPayment = NPriceInt / 12;
+                 break;
+        case 2 : Interest = NetPrice * 0.03;
+                 NPriceInt = NetPrice + Interest;
+                 MPayment = NPriceInt / 15;
+                 break;
+        case 3 : Interest = NetPrice * 0.04;  
+                 NPriceInt = NetPrice + Interest;
+                 MPayment = NPriceInt / 18;
+                 break;
+      }
+    printf("Interest = %.2f\n", Interest);
+    printf("Net Price with Interest = %.2f\n", NPriceInt);
+    printf("Monthly Payment = %.2f\n", MPayment);
+     printf("Do you want to continue? (Yes=1) -> ");
+     scanf("%d", &Cont);
+    } while (Cont == 1);
+      printf("\nExit the program.Thank you.\n\n");
+  return 0;
+}
